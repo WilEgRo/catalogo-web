@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo 9º Aniversario - La Martina</title>
+  <meta name="description" content="Catálogo exclusivo de cursos del 9º Aniversario de La Martina. Selecciona tus cursos favoritos y solicítalos directamente por WhatsApp.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="public/favicon-96x96.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for clean vector icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <div class="brand-logo-wrapper">
+          <img src="public/favicon-96x96.png" alt="La Martina Logo" class="brand-logo-img">
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">La Martina</span>
+          <span class="brand-sub">9º Aniversario</span>
+        </div>
+      </a>
+      
+      <div class="nav-actions">
+        <button id="cartToggleBtn" class="cart-nav-btn" aria-label="Ver cursos seleccionados">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-nav-text">Mi Pedido</span>
+          <span id="cartCountBadge" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-star"></i> ¡Edición Especial Aniversario!
+      </div>
+      <h1 class="hero-title">Catálogo Oficial de Cursos</h1>
+      <p class="hero-subtitle">
+        Celebramos nuestro <strong>9º Aniversario</strong> con la colección más completa de recetas y técnicas gastronómicas. Explora las categorías, añade tus cursos al carrito y confirma tu inscripción directamente por WhatsApp.
+      </p>
+      
+      <div class="hero-stats">
+        <div class="stat-pill"><i class="fa-solid fa-book-open"></i> <strong>148 Cursos</strong> disponibles</div>
+        <div class="stat-pill"><i class="fa-solid fa-tags"></i> <strong>5 Categorías</strong> maestras</div>
+        <div class="stat-pill"><i class="fa-brands fa-whatsapp"></i> <strong>Pedido directo</strong> con 1 clic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+    
+    <!-- Filter & Search Controls -->
+    <section class="controls-section">
+      <!-- Search Input -->
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Buscar curso por nombre (ej. empanadas, queques, pizzas)..." autocomplete="off">
+        <button id="clearSearchBtn" class="clear-search-btn" title="Limpiar búsqueda" style="display: none;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="categories-bar" id="categoriesBar">
+        <button class="cat-pill active" data-category="todos">
+          <i class="fa-solid fa-border-all"></i> Todos <span class="pill-count" id="countTodos">148</span>
+        </button>
+        <button class="cat-pill" data-category="Comidas">
+          <i class="fa-solid fa-utensils"></i> Comidas <span class="pill-count" id="countComidas">24</span>
+        </button>
+        <button class="cat-pill" data-category="Panadería">
+          <i class="fa-solid fa-bread-slice"></i> Panadería <span class="pill-count" id="countPanaderia">19</span>
+        </button>
+        <button class="cat-pill" data-category="Pastelería">
+          <i class="fa-solid fa-cookie-bite"></i> Pastelería <span class="pill-count" id="countPasteleria">53</span>
+        </button>
+        <button class="cat-pill" data-category="Tortas">
+          <i class="fa-solid fa-cake-candles"></i> Tortas <span class="pill-count" id="countTortas">26</span>
+        </button>
+        <button class="cat-pill" data-category="Saludables">
+          <i class="fa-solid fa-heart-pulse"></i> Saludables <span class="pill-count" id="countSaludables">26</span>
+        </button>
+      </div>
+
+      <!-- Results Info Bar -->
+      <div class="results-info">
+        <span id="resultsCount">Mostrando 148 cursos</span>
+        <button id="quickClearSelection" class="text-btn" style="display: none;">
+          <i class="fa-solid fa-rotate-left"></i> Desmarcar todos
+        </button>
+      </div>
+    </section>
+
+    <!-- Course Cards Grid -->
+    <section class="courses-grid" id="coursesGrid">
+      <!-- Injected dynamically via app.js -->
+    </section>
+
+    <!-- Empty State -->
+    <div id="noResultsState" class="empty-state" style="display: none;">
+      <i class="fa-solid fa-cookie icon-empty"></i>
+      <h3>No encontramos ningún curso con ese nombre</h3>
+      <p>Intenta con otra palabra o selecciona una categoría diferente.</p>
+      <button id="resetFiltersBtn" class="btn-primary">Ver todos los cursos</button>
+    </div>
+
+  </main>
+
+  <!-- Floating Mobile Cart Button -->
+  <aside id="floatingCartBtn" class="floating-cart-btn" aria-label="Abrir carrito de compras">
+    <div class="floating-cart-icon">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span id="floatingCartBadge" class="badge">0</span>
+    </div>
+    <span class="floating-cart-label">Ver Pedido</span>
+  </aside>
+
+  <!-- Cart Drawer / Sidebar Modal -->
+  <div id="cartBackdrop" class="cart-backdrop"></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-labelledby="drawerTitle">
+    <div class="drawer-header">
+      <div class="drawer-header-title">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <h2 id="drawerTitle">Mi Pedido</h2>
+        <span id="drawerBadge" class="badge-accent">0 cursos</span>
+      </div>
+      <button id="closeDrawerBtn" class="close-drawer-btn" aria-label="Cerrar panel">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="drawer-notice">
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Selecciona los cursos que deseas y presiona el botón verde para enviarnos la lista a WhatsApp.</span>
+    </div>
+
+    <!-- Selected items list -->
+    <div id="cartItemsList" class="drawer-items-list">
+      <!-- Items dynamically injected -->
+    </div>
+
+    <!-- Empty cart in drawer -->
+    <div id="drawerEmptyState" class="drawer-empty-state">
+      <div class="empty-circle"><i class="fa-solid fa-basket-shopping"></i></div>
+      <h4>Tu lista está vacía</h4>
+      <p>Explora el catálogo y presiona <strong>"+ Agregar"</strong> en los cursos que quieras solicitar.</p>
+      <button id="continueShoppingBtn" class="btn-secondary">Explorar Catálogo</button>
+    </div>
+
+    <!-- Drawer Footer / Checkout -->
+    <div class="drawer-footer" id="drawerFooter">
+      <div class="drawer-summary">
+        <span>Cursos seleccionados:</span>
+        <strong id="drawerTotalCount">0</strong>
+      </div>
+
+      <div class="drawer-actions">
+        <button id="clearAllCartBtn" class="btn-outline-danger" title="Borrar toda la lista">
+          <i class="fa-regular fa-trash-can"></i> Vaciar
+        </button>
+        <button id="whatsappCheckoutBtn" class="btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Lightbox Modal for Art Preview -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      <button id="closeLightboxBtn" class="close-lightbox-btn" aria-label="Cerrar vista"><i class="fa-solid fa-xmark"></i></button>
+      <div class="lightbox-image-wrapper">
+        <img id="lightboxImg" src="" alt="Vista previa del curso">
+      </div>
+      <div class="lightbox-info">
+        <span id="lightboxCategory" class="lightbox-cat-badge">Categoría</span>
+        <h3 id="lightboxTitle">Título del curso</h3>
+        <button id="lightboxAddBtn" class="btn-primary lightbox-btn">
+          <i class="fa-solid fa-plus"></i> Añadir a mi pedido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Confirm Pop-up Modal -->
+  <div id="confirmModal" class="confirm-modal">
+    <div class="confirm-backdrop"></div>
+    <div class="confirm-dialog">
+      <div class="confirm-icon"><i class="fa-solid fa-trash-can"></i></div>
+      <h3 id="confirmTitle">¿Vaciar tu pedido?</h3>
+      <p id="confirmMessage">¿Deseas vaciar todos los cursos seleccionados de tu pedido?</p>
+      <div class="confirm-actions">
+        <button id="confirmCancelBtn" class="btn-dialog btn-cancel">Cancelar</button>
+        <button id="confirmAcceptBtn" class="btn-dialog btn-danger">Sí, vaciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="toast-notification">
+    <i id="toastIcon" class="fa-solid fa-check"></i>
+    <span id="toastMessage">Curso añadido</span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="public/favicon-96x96.png" alt="La Martina Logo" class="footer-logo-img">
+        <span class="footer-logo">La Martina</span>
+        <p>Taller & Escuela de Repostería, Panadería y Gastronomía.</p>
+      </div>
+      <p class="footer-copy">
+        © 2026 La Martina. Todos los derechos reservados. Catálogo oficial del 9º Aniversario.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="courses.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
