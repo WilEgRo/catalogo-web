@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Group or list by numbers
     let message = `¡Hola La Martina! 🎉✨\n`;
-    message += `Ya seleccioné los siguientes *${selectedCourses.length} cursos* de la promoción del *9º Aniversario*:\n\n`;
+    message += `Ya seleccioné los siguientes cursos de la promoción del *9º Aniversario*:\n\n`;
 
     selectedCourses.forEach((course, index) => {
       message += `${index + 1}. *${course.title}* (${course.category})\n`;
