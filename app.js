@@ -445,7 +445,37 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // INITIALIZATION
   // ==========================================
+  function updateCategoryPillsCount() {
+    const total = COURSES_DATA.length;
+    const heroCountStrong = document.querySelector('.hero-stats .stat-pill strong');
+    if (heroCountStrong) {
+      heroCountStrong.textContent = `${total} Cursos`;
+    }
+    const countTodosEl = document.getElementById('countTodos');
+    if (countTodosEl) countTodosEl.textContent = total;
+
+    const catCounts = {};
+    COURSES_DATA.forEach(c => {
+      catCounts[c.category] = (catCounts[c.category] || 0) + 1;
+    });
+
+    const countMap = {
+      'Comidas': 'countComidas',
+      'Panadería': 'countPanaderia',
+      'Pastelería': 'countPasteleria',
+      'Tortas': 'countTortas',
+      'Saludables': 'countSaludables'
+    };
+
+    for (const [catName, elementId] of Object.entries(countMap)) {
+      const el = document.getElementById(elementId);
+      if (el) el.textContent = catCounts[catName] || 0;
+    }
+  }
+
+  updateCategoryPillsCount();
   updateCartUI();
   renderCourses();
 
 });
+

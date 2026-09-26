@@ -1,5 +1,5 @@
 // Catálogo de Cursos - 9no Aniversario La Martina
-// Total cursos: 148
+// Total cursos: 172
 const COURSES_DATA = [
   {
     "id": 1,
@@ -1184,5 +1184,197 @@ const COURSES_DATA = [
     "categorySlug": "saludables",
     "image": "images/saludables/variedades_de_ensaladas.webp",
     "rawName": "variedades de ensaladas.jpeg"
+  },
+  {
+    "id": 149,
+    "title": "Bocaditos para Eventos",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/bocaditos_para_eventos.webp",
+    "rawName": "bocaditos para eventos.jpeg"
+  },
+  {
+    "id": 150,
+    "title": "Comida Casera",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/comida_casera.webp",
+    "rawName": "comida casera.jpeg"
+  },
+  {
+    "id": 151,
+    "title": "Mundo Pastas",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/mundo_pastas.webp",
+    "rawName": "mundo pastas.jpeg"
+  },
+  {
+    "id": 152,
+    "title": "Mundo Pizza",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/mundo_pizza.webp",
+    "rawName": "mundo pizza.jpeg"
+  },
+  {
+    "id": 153,
+    "title": "Masas Hojaldradas Deliciosas",
+    "category": "Panadería",
+    "categorySlug": "panaderia",
+    "image": "images/panaderia/masas_hojaldradas_deliciosas.webp",
+    "rawName": "masas hojaldradas deliciosas.jpeg"
+  },
+  {
+    "id": 154,
+    "title": "Masitas para el Té",
+    "category": "Panadería",
+    "categorySlug": "panaderia",
+    "image": "images/panaderia/masitas_para_el_te.webp",
+    "rawName": "masitas para el té.jpeg"
+  },
+  {
+    "id": 155,
+    "title": "Panes de Todos Santos",
+    "category": "Panadería",
+    "categorySlug": "panaderia",
+    "image": "images/panaderia/panes_de_todos_santos.webp",
+    "rawName": "panes de todos santos.jpeg"
+  },
+  {
+    "id": 156,
+    "title": "Snack, Postres y Refrescos Típicos",
+    "category": "Panadería",
+    "categorySlug": "panaderia",
+    "image": "images/panaderia/snack_postres_y_refrescos_tipicos.webp",
+    "rawName": "snack postres y refrescos tipicos.jpeg"
+  },
+  {
+    "id": 157,
+    "title": "Desayuno para Papá",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/desayuno_para_papa.webp",
+    "rawName": "desayuno para papá.jpeg"
+  },
+  {
+    "id": 158,
+    "title": "Frappes y Smoothies",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/frappes_y_smoothies.webp",
+    "rawName": "frappes y smoothies.jpeg"
+  },
+  {
+    "id": 159,
+    "title": "Habanitos Helados",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/habanitos_helados.webp",
+    "rawName": "habanitos helados.jpeg"
+  },
+  {
+    "id": 160,
+    "title": "Helados Artesanales",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/helados_artesanales.webp",
+    "rawName": "helados artesanales.jpeg"
+  },
+  {
+    "id": 161,
+    "title": "Masas Esponjosas",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/masas_esponjosas.webp",
+    "rawName": "masas esponjosas.jpeg"
+  },
+  {
+    "id": 162,
+    "title": "Mundo Merengón",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/mundo_merengon.webp",
+    "rawName": "mundo merengon.jpeg"
+  },
+  {
+    "id": 163,
+    "title": "Postres Económicos",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/postres_economicos.webp",
+    "rawName": "postres economicos.jpeg"
+  },
+  {
+    "id": 164,
+    "title": "Postres Fríos",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/postres_frios.webp",
+    "rawName": "postres frios.jpeg"
+  },
+  {
+    "id": 165,
+    "title": "Tarde de Queques Mantequillosos",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/tarde_de_queques_mantequillosos.webp",
+    "rawName": "tarde de queques mantequillosos.jpeg"
+  },
+  {
+    "id": 166,
+    "title": "Comida de Catering",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/comida_de_catering.webp",
+    "rawName": "comida de catering.jpeg"
+  },
+  {
+    "id": 167,
+    "title": "Mermeladas Saludables",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/mermeladas_saludables.webp",
+    "rawName": "mermeladas saludables.jpeg"
+  },
+  {
+    "id": 168,
+    "title": "Pastelería con Avena",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/pasteleria_con_avena.webp",
+    "rawName": "pasteleria con avena.jpeg"
+  },
+  {
+    "id": 169,
+    "title": "Smoothies, Kéfir y Shots Saludables",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/smoothies_kefir_y_shots_saludables.webp",
+    "rawName": "smoothies kefir y shots saludables.jpeg"
+  },
+  {
+    "id": 170,
+    "title": "Tartas Saludables",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/tartas_saludables.webp",
+    "rawName": "tartas saludables.jpeg"
+  },
+  {
+    "id": 171,
+    "title": "Tortas Keto",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/tortas_keto.webp",
+    "rawName": "tortas keto.jpeg"
+  },
+  {
+    "id": 172,
+    "title": "Especial para Mamá",
+    "category": "Tortas",
+    "categorySlug": "tortas",
+    "image": "images/tortas/especial_para_mama.webp",
+    "rawName": "especial para mamá.jpeg"
   }
 ];
