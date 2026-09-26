@@ -1,5 +1,5 @@
 // Catálogo de Cursos - 9no Aniversario La Martina
-// Total cursos: 172
+// Total cursos: 173
 const COURSES_DATA = [
   {
     "id": 1,
@@ -1376,5 +1376,13 @@ const COURSES_DATA = [
     "categorySlug": "tortas",
     "image": "images/tortas/especial_para_mama.webp",
     "rawName": "especial para mamá.jpeg"
+  },
+  {
+    "id": 173,
+    "title": "Repostería Saludable",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/reposteria_saludable.webp",
+    "rawName": "repostería saludable.jpeg"
   }
 ];
