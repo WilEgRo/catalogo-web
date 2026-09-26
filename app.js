@@ -259,14 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Group or list by numbers
     let message = `¡Hola La Martina! 🎉✨\n`;
-    message += `Quiero solicitar los siguientes *${selectedCourses.length} cursos* de la promoción del *9º Aniversario*:\n\n`;
+    message += `Ya seleccioné los siguientes *${selectedCourses.length} cursos* de la promoción del *9º Aniversario*:\n\n`;
 
     selectedCourses.forEach((course, index) => {
       message += `${index + 1}. *${course.title}* (${course.category})\n`;
     });
 
     message += `\n📌 *Total seleccionado:* ${selectedCourses.length} curso(s)\n`;
-    message += `¿Me podrían brindar información sobre la promoción y los métodos de pago? ¡Muchas gracias!`;
+    message += `Quiero adquirir estos cursos ¿Me envia el QR para realizar el pago por favor?\n`;
+    message += `¡Muchas gracias!`;
 
     const encodedText = encodeURIComponent(message);
     let url = '';
