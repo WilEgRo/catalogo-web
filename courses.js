@@ -907,11 +907,11 @@ const COURSES_DATA = [
   },
   {
     "id": 114,
-    "title": "Reposteria Saludable",
+    "title": "Reposteria Sin Azúcar",
     "category": "Saludables",
     "categorySlug": "saludables",
     "image": "images/saludables/reposteria_saludable.webp",
-    "rawName": "reposteria saludable.jpeg"
+    "rawName": "reposteria Sin Azúcar.jpeg"
   },
   {
     "id": 115,
@@ -1376,13 +1376,5 @@ const COURSES_DATA = [
     "categorySlug": "tortas",
     "image": "images/tortas/especial_para_mama.webp",
     "rawName": "especial para mamá.jpeg"
-  },
-  {
-    "id": 173,
-    "title": "Repostería Saludable",
-    "category": "Saludables",
-    "categorySlug": "saludables",
-    "image": "images/saludables/reposteria_saludable.webp",
-    "rawName": "repostería saludable.jpeg"
   }
 ];
