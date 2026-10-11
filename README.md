@@ -1,10 +1,10 @@
 <div align="center">
 
-  <img src="public/og-image.jpg" alt="La Martina - Catálogo 9º Aniversario" width="100%" style="border-radius: 12px; max-width: 900px;" />
+  <img src="public/og-image.jpg" alt="La Martina - Catálogo Oficial de Cursos" width="100%" style="border-radius: 12px; max-width: 900px;" />
 
   <br><br>
 
-  # 🍰 Catálogo Oficial • 9º Aniversario
+  # 🍰 Catálogo Oficial de Cursos
   ### *La Martina — Amor por la Cocina*
 
   [![Ver Catálogo en Vivo](https://img.shields.io/badge/🌐_Explorar_Catálogo-En_Línea-D31920?style=for-the-badge&logoColor=white)](https://wilegro.github.io/catalogo-web/)
@@ -19,9 +19,9 @@
 
 ---
 
-## 🌟 Celebrando 9 Años de Tradición y Pasión Culinaria
+## 🌟 Más de 9 Años de Tradición y Pasión Culinaria
 
-Con motivo de nuestro **9º Aniversario**, en **La Martina** reunimos la biblioteca gastronómica más completa y detallada de nuestra historia: **172 cursos virtuales** pensados tanto para quienes desean emprender su propio negocio dulce o salado, como para los amantes de la buena mesa en familia.
+Con más de **9 años de experiencia**, en **La Martina** reunimos la biblioteca gastronómica más completa y detallada de nuestra historia: **172 cursos virtuales** pensados tanto para quienes desean emprender su propio negocio dulce o salado, como para los amantes de la buena mesa en familia.
 
 Cada curso incluye recetarios exactos, listas de insumos, técnicas de preparación paso a paso, secretos de conservación y presentaciones comerciales de alto impacto.
 
@@ -63,5 +63,5 @@ Accede al catálogo interactivo y elige tus próximas especialidades:
 ---
 
 <div align="center">
-  <sub>© 2026 <strong>La Martina</strong> • Amor por la Cocina • Catálogo Oficial 9º Aniversario. Todos los derechos reservados.</sub>
+  <sub>© 2026 <strong>La Martina</strong> • Amor por la Cocina • Catálogo Oficial de Cursos. Todos los derechos reservados.</sub>
 </div>

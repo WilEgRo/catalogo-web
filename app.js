@@ -1,5 +1,5 @@
 /**
- * Catálogo 9º Aniversario La Martina
+ * Catálogo Oficial La Martina
  * Main JavaScript Application (Vanilla JS)
  */
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load cart from LocalStorage
   try {
-    const saved = localStorage.getItem('la_martina_cart_anniversary');
+    const saved = localStorage.getItem('la_martina_cart') || localStorage.getItem('la_martina_cart_anniversary');
     if (saved) {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed)) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function saveCart() {
     try {
-      localStorage.setItem('la_martina_cart_anniversary', JSON.stringify(Array.from(selectedIds)));
+      localStorage.setItem('la_martina_cart', JSON.stringify(Array.from(selectedIds)));
     } catch (e) {
       console.error('Error saving cart', e);
     }
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Group or list by numbers
     let message = `¡Hola La Martina! 🎉✨\n`;
-    message += `Ya seleccioné los siguientes cursos de la promoción del *9º Aniversario*:\n\n`;
+    message += `Ya seleccioné los cursos que deseo adquirir:\n\n`;
 
     selectedCourses.forEach((course, index) => {
       message += `${index + 1}. *${course.title}* (${course.category})\n`;

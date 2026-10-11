@@ -1,4 +1,4 @@
-// Catálogo de Cursos - 9no Aniversario La Martina
+// Catálogo Oficial de Cursos - La Martina
 // Total cursos: 173
 const COURSES_DATA = [
   {
