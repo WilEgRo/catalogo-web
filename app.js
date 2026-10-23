@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeCategory = 'todos';
   let searchQuery = '';
   let selectedIds = new Set();
+  let currentSort = 'recientes';
 
   // Load cart from LocalStorage
   try {
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const categoriesBar = document.getElementById('categoriesBar');
   const resultsCountEl = document.getElementById('resultsCount');
   const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+  const sortSelect = document.getElementById('sortSelect');
   
   // Cart Nav & Floating
   const cartToggleBtn = document.getElementById('cartToggleBtn');
@@ -337,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function getFilteredCourses() {
     const normSearch = normalizeText(searchQuery);
 
-    return COURSES_DATA.filter(course => {
+    let list = COURSES_DATA.filter(course => {
       // Category check
       const matchesCategory = (activeCategory === 'todos') || (course.category === activeCategory);
       if (!matchesCategory) return false;
@@ -351,6 +353,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return true;
     });
+
+    // Ordenamiento dinámico
+    list = [...list].sort((a, b) => {
+      if (currentSort === 'recientes') {
+        return (b.id || 0) - (a.id || 0); // Los últimos cursos subidos primero
+      } else if (currentSort === 'antiguos') {
+        return (a.id || 0) - (b.id || 0); // Los primeros cursos subidos primero
+      } else if (currentSort === 'az') {
+        return (a.title || '').localeCompare(b.title || '', 'es', { sensitivity: 'base' });
+      } else if (currentSort === 'za') {
+        return (b.title || '').localeCompare(a.title || '', 'es', { sensitivity: 'base' });
+      }
+      return 0;
+    });
+
+    return list;
   }
 
   function renderCourses() {
@@ -366,12 +384,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     noResultsState.style.display = 'none';
 
+    // Identificar los cursos más recientes para colocar badge "Nuevo"
+    const maxId = COURSES_DATA.reduce((max, c) => Math.max(max, c.id || 0), 0);
+    const newThreshold = Math.max(1, maxId - 6);
+
     coursesGrid.innerHTML = filtered.map(course => {
       const isSelected = selectedIds.has(course.id);
+      const isNewCourse = (course.id || 0) >= newThreshold;
+
       return `
         <article class="course-card ${isSelected ? 'is-selected' : ''}" data-id="${course.id}">
           <div class="card-media" title="Ver arte en tamaño completo">
             <span class="card-badge">${course.category}</span>
+            ${isNewCourse ? '<span class="card-badge-new"><i class="fa-solid fa-sparkles"></i> Nuevo</span>' : ''}
             <img src="${course.image}" alt="${course.title}" loading="lazy">
             <div class="card-zoom-overlay">
               <i class="fa-solid fa-expand"></i>
@@ -407,8 +432,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // EVENT LISTENERS (Search & Category Pills)
+  // EVENT LISTENERS (Search, Sort & Filters)
   // ==========================================
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      renderCourses();
+    });
+  }
+
   searchInput.addEventListener('input', (e) => {
     searchQuery = e.target.value;
     clearSearchBtn.style.display = searchQuery ? 'flex' : 'none';
@@ -428,52 +460,102 @@ document.addEventListener('DOMContentLoaded', () => {
     searchQuery = '';
     clearSearchBtn.style.display = 'none';
     activeCategory = 'todos';
-    document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
-    document.querySelector('.cat-pill[data-category="todos"]').classList.add('active');
+    currentSort = 'recientes';
+    if (sortSelect) sortSelect.value = 'recientes';
+    renderCategoriesBar();
     renderCourses();
   });
 
-  categoriesBar.querySelectorAll('.cat-pill').forEach(btn => {
-    btn.addEventListener('click', () => {
-      categoriesBar.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeCategory = btn.getAttribute('data-category');
-      renderCourses();
+  // ==========================================
+  // DYNAMIC CATEGORIES BAR
+  // ==========================================
+  const CATEGORY_ICONS = {
+    'todos': 'fa-solid fa-border-all',
+    'comidas': 'fa-solid fa-utensils',
+    'panaderia': 'fa-solid fa-bread-slice',
+    'pasteleria': 'fa-solid fa-cookie-bite',
+    'tortas': 'fa-solid fa-cake-candles',
+    'saludables': 'fa-solid fa-heart-pulse',
+    'navidenos': 'fa-solid fa-snowflake',
+    'navidad': 'fa-solid fa-snowflake',
+    'navideno': 'fa-solid fa-snowflake',
+    'gourmet': 'fa-solid fa-crown',
+    'chocolateria': 'fa-solid fa-candy-cane',
+    'bebidas': 'fa-solid fa-martini-glass'
+  };
+
+  function getCategoryIcon(catName) {
+    const key = normalizeText(catName);
+    if (CATEGORY_ICONS[key]) return CATEGORY_ICONS[key];
+    if (key.includes('navid')) return 'fa-solid fa-snowflake';
+    if (key.includes('gourmet')) return 'fa-solid fa-crown';
+    if (key.includes('choc')) return 'fa-solid fa-candy-cane';
+    if (key.includes('pan')) return 'fa-solid fa-bread-slice';
+    if (key.includes('bebid') || key.includes('jug')) return 'fa-solid fa-martini-glass';
+    return 'fa-solid fa-tag';
+  }
+
+  function renderCategoriesBar() {
+    const total = COURSES_DATA.length;
+    
+    // Contar cursos por categoría
+    const catCounts = {};
+    COURSES_DATA.forEach(c => {
+      const cat = c.category ? c.category.trim() : 'Varios';
+      catCounts[cat] = (catCounts[cat] || 0) + 1;
     });
-  });
+
+    // Orden preferido de las clásicas, luego las nuevas alfabéticamente
+    const preferredOrder = ['Comidas', 'Panadería', 'Pastelería', 'Tortas', 'Saludables'];
+    const allCategories = Object.keys(catCounts).sort((a, b) => {
+      const idxA = preferredOrder.indexOf(a);
+      const idxB = preferredOrder.indexOf(b);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      return a.localeCompare(b);
+    });
+
+    let html = `
+      <button class="cat-pill ${activeCategory === 'todos' ? 'active' : ''}" data-category="todos">
+        <i class="fa-solid fa-border-all"></i> Todos <span class="pill-count" id="countTodos">${total}</span>
+      </button>
+    `;
+
+    allCategories.forEach(cat => {
+      const icon = getCategoryIcon(cat);
+      const isActive = activeCategory === cat;
+      html += `
+        <button class="cat-pill ${isActive ? 'active' : ''}" data-category="${cat}">
+          <i class="${icon}"></i> ${cat} <span class="pill-count">${catCounts[cat]}</span>
+        </button>
+      `;
+    });
+
+    categoriesBar.innerHTML = html;
+
+    // Conectar eventos click
+    categoriesBar.querySelectorAll('.cat-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoriesBar.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.getAttribute('data-category');
+        renderCourses();
+      });
+    });
+
+    // Actualizar Hero stats dinámicamente
+    const heroStats = document.querySelectorAll('.hero-stats .stat-pill strong');
+    if (heroStats && heroStats.length >= 2) {
+      heroStats[0].textContent = `${total} Cursos`;
+      heroStats[1].textContent = `${allCategories.length} Categorías`;
+    }
+  }
 
   // ==========================================
   // INITIALIZATION
   // ==========================================
-  function updateCategoryPillsCount() {
-    const total = COURSES_DATA.length;
-    const heroCountStrong = document.querySelector('.hero-stats .stat-pill strong');
-    if (heroCountStrong) {
-      heroCountStrong.textContent = `${total} Cursos`;
-    }
-    const countTodosEl = document.getElementById('countTodos');
-    if (countTodosEl) countTodosEl.textContent = total;
-
-    const catCounts = {};
-    COURSES_DATA.forEach(c => {
-      catCounts[c.category] = (catCounts[c.category] || 0) + 1;
-    });
-
-    const countMap = {
-      'Comidas': 'countComidas',
-      'Panadería': 'countPanaderia',
-      'Pastelería': 'countPasteleria',
-      'Tortas': 'countTortas',
-      'Saludables': 'countSaludables'
-    };
-
-    for (const [catName, elementId] of Object.entries(countMap)) {
-      const el = document.getElementById(elementId);
-      if (el) el.textContent = catCounts[catName] || 0;
-    }
-  }
-
-  updateCategoryPillsCount();
+  renderCategoriesBar();
   updateCartUI();
   renderCourses();
 

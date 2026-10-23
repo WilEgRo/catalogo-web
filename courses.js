@@ -1,5 +1,5 @@
 // Catálogo Oficial de Cursos - La Martina
-// Total cursos: 173
+// Total cursos: 176
 const COURSES_DATA = [
   {
     "id": 1,
@@ -1376,5 +1376,37 @@ const COURSES_DATA = [
     "categorySlug": "tortas",
     "image": "images/tortas/especial_para_mama.webp",
     "rawName": "especial para mamá.jpeg"
+  },
+  {
+    "id": 173,
+    "title": "Comidas Alto Gourmet",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/comidas_alto_gourmet.webp",
+    "rawName": "comidas alto gourmet.jpg"
+  },
+  {
+    "id": 174,
+    "title": "Mesa Dulce Para Eventos",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/mesa_dulce_para_eventos.webp",
+    "rawName": "mesa dulce para eventos.jpg"
+  },
+  {
+    "id": 175,
+    "title": "Tortas Soufles Chifonadas",
+    "category": "Tortas",
+    "categorySlug": "tortas",
+    "image": "images/tortas/tortas_soufles_chifonadas.webp",
+    "rawName": "tortas soufle.jpg"
+  },
+  {
+    "id": 176,
+    "title": "Galletas Y Alfajores Navideños",
+    "category": "Navideños",
+    "categorySlug": "navidenos",
+    "image": "images/navidenos/galletas_y_alfajores_navidenos.webp",
+    "rawName": "Galletas y alfajores navideños.jpg"
   }
 ];

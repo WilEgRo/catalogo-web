@@ -1,0 +1,8 @@
+# Archivos del Administrador Local (Privado - No subir a GitHub)
+admin-server.mjs
+admin.html
+iniciar-admin.bat
+admin/
+node_modules/
+.DS_Store
+Thumbs.db
