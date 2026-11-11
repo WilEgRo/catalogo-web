@@ -1,5 +1,5 @@
 // Catálogo Oficial de Cursos - La Martina
-// Total cursos: 176
+// Total cursos: 183
 const COURSES_DATA = [
   {
     "id": 1,
@@ -1408,5 +1408,61 @@ const COURSES_DATA = [
     "categorySlug": "navidenos",
     "image": "images/navidenos/galletas_y_alfajores_navidenos.webp",
     "rawName": "Galletas y alfajores navideños.jpg"
+  },
+  {
+    "id": 177,
+    "title": "Postres Con Coco",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/postres_con_coco.webp",
+    "rawName": "Remove_course_price_and_date_3031c998.jpg"
+  },
+  {
+    "id": 178,
+    "title": "Queques Navideños",
+    "category": "Navideños",
+    "categorySlug": "navidenos",
+    "image": "images/navidenos/queques_navidenos.webp",
+    "rawName": "Remove_course_price_and_date_9501c73e_2K.jpg"
+  },
+  {
+    "id": 179,
+    "title": "Sabores Congelados",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/sabores_congelados.webp",
+    "rawName": "Remove_course_price_and_date_abe7832f.jpg"
+  },
+  {
+    "id": 180,
+    "title": "Pannetones Trufados Brasileños",
+    "category": "Navideños",
+    "categorySlug": "navidenos",
+    "image": "images/navidenos/pannetones_trufados_brasilenos.webp",
+    "rawName": "Remove_course_price_and_date_33292a57.jpg"
+  },
+  {
+    "id": 181,
+    "title": "Masas Navideñas Saludables",
+    "category": "Saludables",
+    "categorySlug": "saludables",
+    "image": "images/saludables/masas_navidenas_saludables.webp",
+    "rawName": "Remove_course_price_and_date_31d5435e.jpg"
+  },
+  {
+    "id": 182,
+    "title": "Frutas Realistas En 3D",
+    "category": "Pastelería",
+    "categorySlug": "pasteleria",
+    "image": "images/pasteleria/frutas_realistas_en_3d.webp",
+    "rawName": "Remove_course_price_and_date_482a673a.jpg"
+  },
+  {
+    "id": 183,
+    "title": "Comidas Para Eventos",
+    "category": "Comidas",
+    "categorySlug": "comida",
+    "image": "images/comida/comidas_para_eventos.webp",
+    "rawName": "Remove_course_price_and_date_f0a25adb.jpg"
   }
 ];
