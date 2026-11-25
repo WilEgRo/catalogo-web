@@ -1,5 +1,5 @@
 // Catálogo Oficial de Cursos - La Martina
-// Total cursos: 183
+// Total cursos: 184
 const COURSES_DATA = [
   {
     "id": 1,
@@ -1262,8 +1262,8 @@ const COURSES_DATA = [
     "title": "Frappes y Smoothies",
     "category": "Pastelería",
     "categorySlug": "pasteleria",
-    "image": "images/pasteleria/frappes_y_smoothies.webp",
-    "rawName": "frappes y smoothies.jpeg"
+    "image": "images/pasteleria/frappes_y_smoothies_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (1).jpeg"
   },
   {
     "id": 159,
@@ -1382,87 +1382,95 @@ const COURSES_DATA = [
     "title": "Comidas Alto Gourmet",
     "category": "Comidas",
     "categorySlug": "comida",
-    "image": "images/comida/comidas_alto_gourmet.webp",
-    "rawName": "comidas alto gourmet.jpg"
+    "image": "images/comida/comidas_alto_gourmet_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16.jpeg"
   },
   {
     "id": 174,
     "title": "Mesa Dulce Para Eventos",
     "category": "Pastelería",
     "categorySlug": "pasteleria",
-    "image": "images/pasteleria/mesa_dulce_para_eventos.webp",
-    "rawName": "mesa dulce para eventos.jpg"
+    "image": "images/pasteleria/mesa_dulce_para_eventos_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (5).jpeg"
   },
   {
     "id": 175,
     "title": "Tortas Soufles Chifonadas",
     "category": "Tortas",
     "categorySlug": "tortas",
-    "image": "images/tortas/tortas_soufles_chifonadas.webp",
-    "rawName": "tortas soufle.jpg"
+    "image": "images/tortas/tortas_soufles_chifonadas_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.13 (1).jpeg"
   },
   {
     "id": 176,
     "title": "Galletas Y Alfajores Navideños",
     "category": "Navideños",
     "categorySlug": "navidenos",
-    "image": "images/navidenos/galletas_y_alfajores_navidenos.webp",
-    "rawName": "Galletas y alfajores navideños.jpg"
+    "image": "images/navidenos/galletas_y_alfajores_navidenos_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (3).jpeg"
   },
   {
     "id": 177,
     "title": "Postres Con Coco",
     "category": "Pastelería",
     "categorySlug": "pasteleria",
-    "image": "images/pasteleria/postres_con_coco.webp",
-    "rawName": "Remove_course_price_and_date_3031c998.jpg"
+    "image": "images/pasteleria/postres_con_coco_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (8).jpeg"
   },
   {
     "id": 178,
     "title": "Queques Navideños",
     "category": "Navideños",
     "categorySlug": "navidenos",
-    "image": "images/navidenos/queques_navidenos.webp",
-    "rawName": "Remove_course_price_and_date_9501c73e_2K.jpg"
+    "image": "images/navidenos/queques_navidenos_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.13.jpeg"
   },
   {
     "id": 179,
     "title": "Sabores Congelados",
     "category": "Comidas",
     "categorySlug": "comida",
-    "image": "images/comida/sabores_congelados.webp",
-    "rawName": "Remove_course_price_and_date_abe7832f.jpg"
+    "image": "images/comida/sabores_congelados_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.14.jpeg"
   },
   {
     "id": 180,
     "title": "Pannetones Trufados Brasileños",
     "category": "Navideños",
     "categorySlug": "navidenos",
-    "image": "images/navidenos/pannetones_trufados_brasilenos.webp",
-    "rawName": "Remove_course_price_and_date_33292a57.jpg"
+    "image": "images/navidenos/pannetones_trufados_brasilenos_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (6).jpeg"
   },
   {
     "id": 181,
     "title": "Masas Navideñas Saludables",
     "category": "Saludables",
     "categorySlug": "saludables",
-    "image": "images/saludables/masas_navidenas_saludables.webp",
-    "rawName": "Remove_course_price_and_date_31d5435e.jpg"
+    "image": "images/saludables/masas_navidenas_saludables_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (4).jpeg"
   },
   {
     "id": 182,
     "title": "Frutas Realistas En 3D",
     "category": "Pastelería",
     "categorySlug": "pasteleria",
-    "image": "images/pasteleria/frutas_realistas_en_3d.webp",
-    "rawName": "Remove_course_price_and_date_482a673a.jpg"
+    "image": "images/pasteleria/frutas_realistas_en_3d_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (2).jpeg"
   },
   {
     "id": 183,
     "title": "Comidas Para Eventos",
     "category": "Comidas",
     "categorySlug": "comida",
-    "image": "images/comida/comidas_para_eventos.webp",
-    "rawName": "Remove_course_price_and_date_f0a25adb.jpg"
+    "image": "images/comida/comidas_para_eventos_2.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.15.jpeg"
+  },
+  {
+    "id": 184,
+    "title": "Piononos Navideños",
+    "category": "Navideños",
+    "categorySlug": "navidenos",
+    "image": "images/navidenos/piononos_navidenos.webp",
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (7).jpeg"
   }
 ];
