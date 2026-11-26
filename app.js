@@ -591,8 +591,85 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // GLOBAL HOLIDAY SNOWFALL (Real SVG Snowflakes)
+  // ==========================================
+  function initSnowfall() {
+    const container = document.getElementById('snowfallLayer');
+    if (!container) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const SNOWFLAKE_SHAPES = [
+      // Cristal clásico de 6 puntas con ramas
+      `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 2v28M3.9 9l24.2 14M28.1 9L3.9 23"/>
+        <path d="M13 5l3 3 3-3M13 27l3-3 3 3M5.5 13.5l3.6-1-1-3.6M26.5 18.5l-3.6 1 1 3.6M23.9 8.9l-1 3.6 3.6 1M8.1 23.1l1-3.6-3.6-1"/>
+      </svg>`,
+      // Cristal delicado con centro hexagonal
+      `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 3v26M4.7 9.5l22.6 13M27.3 9.5L4.7 22.5"/>
+        <polygon points="16,11.5 19.9,13.75 19.9,18.25 16,20.5 12.1,18.25 12.1,13.75" fill="rgba(255,255,255,0.45)"/>
+        <path d="M13.5 6.5L16 9l2.5-2.5M13.5 25.5L16 23l2.5 2.5M7 13.2l3-.8-.8-3M25 18.8l-3 .8.8 3M22.8 9.4l-.8 3 3 .8M9.2 22.6l.8-3-3-.8"/>
+      </svg>`,
+      // Estrella de nieve de 8 puntas
+      `<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M16 3v26M3 16h26M6.8 6.8l18.4 18.4M25.2 6.8L6.8 25.2"/>
+        <circle cx="16" cy="16" r="2.6" fill="rgba(255,255,255,0.7)"/>
+      </svg>`
+    ];
+
+    const COLORS = ['#93c9e6', '#7ebce0', '#b4ddf2', '#a3d3ec'];
+    const isMobile = window.innerWidth <= 640;
+    const flakeCount = isMobile ? 20 : 36;
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < flakeCount; i++) {
+      const flake = document.createElement('div');
+      flake.className = 'snowflake';
+
+      // Distribución horizontal con variación aleatoria para evitar líneas
+      const baseX = (i / flakeCount) * 100;
+      const jitterX = (Math.random() - 0.5) * (100 / flakeCount) * 1.4;
+      const x = Math.max(1, Math.min(99, baseX + jitterX));
+
+      const size = (isMobile ? 11 : 12) + Math.random() * (isMobile ? 11 : 14);
+      const fallDuration = 10 + Math.random() * 12;
+      const fallDelay = -Math.random() * fallDuration;
+      const swayDuration = 3 + Math.random() * 4;
+      const swayDelay = -Math.random() * swayDuration;
+      const swayAmp = 16 + Math.random() * 38;
+      const windDrift = (Math.random() - 0.5) * 90;
+      const spinDuration = 6 + Math.random() * 10;
+      const spinDir = Math.random() > 0.5 ? 'normal' : 'reverse';
+      const opacity = 0.42 + Math.random() * 0.46;
+      const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+      const shape = SNOWFLAKE_SHAPES[Math.floor(Math.random() * SNOWFLAKE_SHAPES.length)];
+
+      flake.style.setProperty('--snow-x', `${x.toFixed(2)}%`);
+      flake.style.setProperty('--snow-size', `${size.toFixed(1)}px`);
+      flake.style.setProperty('--fall-duration', `${fallDuration.toFixed(2)}s`);
+      flake.style.setProperty('--fall-delay', `${fallDelay.toFixed(2)}s`);
+      flake.style.setProperty('--sway-duration', `${swayDuration.toFixed(2)}s`);
+      flake.style.setProperty('--sway-delay', `${swayDelay.toFixed(2)}s`);
+      flake.style.setProperty('--sway-amp', `${swayAmp.toFixed(1)}px`);
+      flake.style.setProperty('--wind-drift', `${windDrift.toFixed(1)}px`);
+      flake.style.setProperty('--spin-duration', `${spinDuration.toFixed(2)}s`);
+      flake.style.setProperty('--spin-dir', spinDir);
+      flake.style.setProperty('--snow-opacity', opacity.toFixed(2));
+      flake.style.setProperty('--snow-color', color);
+
+      flake.innerHTML = `<div class="snowflake-sway">${shape}</div>`;
+      fragment.appendChild(flake);
+    }
+
+    container.appendChild(fragment);
+  }
+
+  // ==========================================
   // INITIALIZATION
   // ==========================================
+  initSnowfall();
   renderCategoriesBar();
   updateCartUI();
   renderCourses();

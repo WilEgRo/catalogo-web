@@ -260,20 +260,42 @@ button {
   animation-delay: -1s;
 }
 
-.holiday-snow {
-  position: absolute;
-  z-index: 0;
-  inset: 22px 0 0;
-  background-image:
-    radial-gradient(circle, rgba(170, 207, 226, 0.92) 0 2.4px, transparent 3.3px),
-    radial-gradient(circle, rgba(221, 239, 248, 0.96) 0 3px, transparent 4px),
-    radial-gradient(circle, rgba(154, 192, 212, 0.8) 0 1.8px, transparent 2.8px);
-  background-size: 150px 150px, 220px 220px, 280px 280px;
-  background-position: 0 0, 40px 30px, 90px -50px;
-  opacity: 0;
+.holiday-snow-global {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  overflow: hidden;
   pointer-events: none;
-  animation: sleigh-passage-snow 30s linear infinite;
-  animation-delay: -8s;
+}
+
+.snowflake {
+  position: absolute;
+  top: -36px;
+  left: var(--snow-x, 50%);
+  width: var(--snow-size, 16px);
+  height: var(--snow-size, 16px);
+  opacity: var(--snow-opacity, 0.78);
+  will-change: transform;
+  animation: snow-fall-y var(--fall-duration, 13s) linear infinite;
+  animation-delay: var(--fall-delay, 0s);
+}
+
+.snowflake-sway {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  animation: snow-sway-x var(--sway-duration, 4.5s) ease-in-out infinite alternate;
+  animation-delay: var(--sway-delay, 0s);
+}
+
+.snowflake svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--snow-color, #95cce8);
+  filter: drop-shadow(0 1px 2px rgba(52, 108, 145, 0.22));
+  animation: snow-spin var(--spin-duration, 9s) linear infinite;
+  animation-direction: var(--spin-dir, normal);
 }
 
 .holiday-flight {
@@ -2250,17 +2272,30 @@ button {
   }
 }
 
-@keyframes sleigh-passage-snow {
-  0%, 12% {
-    opacity: 0;
-    background-position: 0 0, 40px 30px, 90px -50px;
+@keyframes snow-fall-y {
+  0% {
+    transform: translate3d(0, -10vh, 0);
   }
-  20% { opacity: 0.2; }
-  35%, 62% { opacity: 0.82; }
-  78% { opacity: 0.35; }
-  90%, 100% {
-    opacity: 0;
-    background-position: 0 150px, 40px 250px, 90px 230px;
+  100% {
+    transform: translate3d(var(--wind-drift, 20px), 112vh, 0);
+  }
+}
+
+@keyframes snow-sway-x {
+  0% {
+    transform: translate3d(calc(var(--sway-amp, 26px) * -1), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--sway-amp, 26px), 0, 0);
+  }
+}
+
+@keyframes snow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -2381,15 +2416,17 @@ button {
   .holiday-tree-topper,
   .holiday-tree-branches path,
   .holiday-tree-lights circle,
-  .holiday-snow,
+  .snowflake,
+  .snowflake-sway,
+  .snowflake svg,
   .lightbox-modal,
   .lightbox-modal.open .lightbox-container {
     animation: none;
     transition: none;
   }
 
-  .holiday-snow {
-    opacity: 0.14;
+  .holiday-snow-global {
+    display: none;
   }
 
   .holiday-bulb {
@@ -2475,10 +2512,6 @@ button {
     bottom: 0.25rem;
     width: 64px;
     opacity: 0.68;
-  }
-  .holiday-snow {
-    animation-duration: 20s;
-    animation-delay: -7s;
   }
   .lightbox-container {
     flex-direction: column;
