@@ -1471,6 +1471,8 @@ const COURSES_DATA = [
     "category": "Navideños",
     "categorySlug": "navidenos",
     "image": "images/navidenos/piononos_navidenos.webp",
-    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (7).jpeg"
+    "rawName": "WhatsApp Image 2026-11-19 at 15.36.16 (7).jpeg",
+    "description": "✨ Aprenderás desde cero:\n🎄 Tronco Navideño\n❤️ Pionono Red Velvet\n🎨 Pionono Especiado Estampado Navideño\n🥪 Brazo Gitano Salado para Compartir\n🍰 Masas profesionales para piononos\n🍮 Rellenos cremosos\n🍦 Cremas para decoración y acabado\n✨ Técnicas de decoración navideña",
+    "price": 69.99
   }
 ];

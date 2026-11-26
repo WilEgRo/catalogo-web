@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxTitle = document.getElementById('lightboxTitle');
   const lightboxCategory = document.getElementById('lightboxCategory');
+  const lightboxDescription = document.getElementById('lightboxDescription');
+  const lightboxPrice = document.getElementById('lightboxPrice');
   const lightboxAddBtn = document.getElementById('lightboxAddBtn');
   const closeLightboxBtn = document.getElementById('closeLightboxBtn');
   let activeLightboxCourse = null;
@@ -293,9 +295,37 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxImg.src = course.image;
     lightboxTitle.textContent = course.title;
     lightboxCategory.textContent = course.category;
+    lightboxDescription.textContent = course.description || '';
+    lightboxDescription.hidden = !course.description;
+    lightboxPrice.classList.remove('is-promo');
+
+    const promotion = CATALOG_SETTINGS.promotion;
+    if (promotion.active && isValidPrice(promotion.price)) {
+      lightboxPrice.textContent = `Promoción: ${formatPrice(promotion.price)}`;
+      lightboxPrice.classList.add('is-promo');
+    } else if (isValidPrice(course.price)) {
+      lightboxPrice.textContent = formatPrice(course.price);
+    } else {
+      lightboxPrice.textContent = 'Consultar precio';
+    }
+
     updateLightboxBtnState();
+    lightboxModal.classList.remove('open');
+    void lightboxModal.offsetWidth;
     lightboxModal.classList.add('open');
     document.body.style.overflow = 'hidden';
+  }
+
+  function formatPrice(price) {
+    const formattedPrice = Number(price).toLocaleString('es-BO', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2
+    });
+    return `Bs ${formattedPrice}`;
+  }
+
+  function isValidPrice(price) {
+    return price !== null && price !== undefined && price !== '' && Number.isFinite(Number(price)) && Number(price) >= 0;
   }
 
   function closeLightbox() {
@@ -391,6 +421,13 @@ document.addEventListener('DOMContentLoaded', () => {
     coursesGrid.innerHTML = filtered.map(course => {
       const isSelected = selectedIds.has(course.id);
       const isNewCourse = (course.id || 0) >= newThreshold;
+      const hasPromotion = CATALOG_SETTINGS.promotion.active && isValidPrice(CATALOG_SETTINGS.promotion.price);
+      const displayedPrice = hasPromotion
+        ? CATALOG_SETTINGS.promotion.price
+        : isValidPrice(course.price) ? course.price : null;
+      const priceMarkup = displayedPrice === null
+        ? ''
+        : `<span class="card-price ${hasPromotion ? 'is-promo' : ''}">${hasPromotion ? '<i class="fa-solid fa-sparkles"></i> Promo · ' : ''}${formatPrice(displayedPrice)}</span>`;
 
       return `
         <article class="course-card ${isSelected ? 'is-selected' : ''}" data-id="${course.id}">
@@ -404,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div class="card-body">
             <h3 class="card-title" title="${course.title}">${course.title}</h3>
+            ${priceMarkup}
             <button class="btn-toggle-cart" data-id="${course.id}" aria-label="${isSelected ? 'Quitar del pedido' : 'Añadir al pedido'}">
               <i class="${isSelected ? 'fa-solid fa-check' : 'fa-solid fa-plus'}"></i>
               <span>${isSelected ? 'En tu pedido' : 'Añadir al pedido'}</span>
