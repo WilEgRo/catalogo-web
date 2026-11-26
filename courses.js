@@ -1233,7 +1233,7 @@ const COURSES_DATA = [
   },
   {
     "id": 143,
-    "title": "Tortastortas Rápidas",
+    "title": "Tortas Rápidas",
     "category": "Tortas",
     "categorySlug": "tortas",
     "image": "images/tortas/tortastortas_r_pidas.webp",
